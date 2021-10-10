@@ -2,7 +2,7 @@ package feelmusicbackend.demo.entity;
 
 public class Artist {
     private Integer idArtist;
-    private Integer idPerson;
+    private Integer idUser;
     private String country;
     private String artistName;
 
@@ -18,12 +18,12 @@ public class Artist {
         this.idArtist = idArtist;
     }
 
-    public Integer getIdPerson() {
-        return idPerson;
+    public Integer getIdUser() {
+        return idUser;
     }
 
-    public void setIdPerson(Integer idPerson) {
-        this.idPerson = idPerson;
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
     public String getCountry() {
@@ -46,7 +46,7 @@ public class Artist {
     public String toString() {
         return "Artist{" +
                 "idArtist=" + idArtist +
-                ", idPerson=" + idPerson +
+                ", idUser=" + idUser +
                 ", country='" + country + '\'' +
                 ", artistName='" + artistName + '\'' +
                 '}';

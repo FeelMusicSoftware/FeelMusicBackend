@@ -3,9 +3,9 @@ package feelmusicbackend.demo.entity;
 public class Person {
     private Integer idPerson;
     private String name;
-    private String lastName;
-    private String email;
-    private String password;
+    private String firstSurname;
+    private String secondSurname;
+    private String phone;
 
     public Person() {
     }
@@ -26,28 +26,28 @@ public class Person {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getFirstSurname() {
+        return firstSurname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFirstSurname(String firstSurname) {
+        this.firstSurname = firstSurname;
     }
 
-    public String getEmail() {
-        return email;
+    public String getSecondSurname() {
+        return secondSurname;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
@@ -55,10 +55,9 @@ public class Person {
         return "Person{" +
                 "idPerson=" + idPerson +
                 ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", firstSurname='" + firstSurname + '\'' +
+                ", secondSurname='" + secondSurname + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
-
 }
