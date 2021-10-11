@@ -1,6 +1,7 @@
 package feelmusicbackend.demo.controllers;
 
 import feelmusicbackend.demo.dto.UserDataRequest;
+import feelmusicbackend.demo.dto.UserResponse;
 import feelmusicbackend.demo.entity.User;
 import feelmusicbackend.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,13 @@ public class UserControllers {
     public UserControllers(UserService userService){
         this.userService=userService;
     }
+
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserResponse createUser(@RequestBody UserResponse userResponse) {
+        userService.createUser(userResponse);
+        return userResponse;
+    }
+
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public User addUser(@RequestBody User user, HttpServletRequest request){
