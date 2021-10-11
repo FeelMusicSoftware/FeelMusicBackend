@@ -22,16 +22,16 @@ public class UserControllers {
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public UserResponse createUser(@RequestBody UserResponse userResponse) {
-        userService.createUser(userResponse);
-        return userResponse;
+        return userService.createUser(userResponse);
     }
 
-
+    /*
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public User addUser(@RequestBody User user, HttpServletRequest request){
         User userRes = userService.addUser(user);
         return userRes;
     }
+    */
 
     @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -8,7 +8,6 @@ import feelmusicbackend.demo.entity.User;
 import feelmusicbackend.demo.repository.PersonRepository;
 import feelmusicbackend.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,6 +30,7 @@ public class UserService {
     }
 
     public UserResponse createUser(UserResponse userResponse){
+        System.out.println(userResponse.getName()+" ENTOTOTO");
         User user = new User();
         Person person = new Person();
         person.setName(userResponse.getName());
@@ -38,13 +38,14 @@ public class UserService {
         person.setSecondSurname(userResponse.getSecondSurname());
         person.setPhone(userResponse.getPhone());
         personRepository.createPerson(person);
+        System.out.println(person.getName());
         int personId=personRepository.getLastInsertId();
         user.setIdPerson(personId);
         user.setUsername(userResponse.getUsername());
         user.setEmail(userResponse.getEmail());
         user.setPassword(userResponse.getPassword());
         userRepository.createUser(user);
-        int userId=userRepository.getLastInsertUserId();
+        int userId=personRepository.getLastInsertId();
         userResponse.setIdUser(userId);
         userResponse.setIdPerson(personId);
         return userResponse;

@@ -3,8 +3,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "idUser": 1,
-  "idPerson": 1,
+  "idUser": 2,
+  "idPerson": 2,
   "name": "jorge",
   "firstSurname": "alejo",
   "secondSurname": "gutierrez",
