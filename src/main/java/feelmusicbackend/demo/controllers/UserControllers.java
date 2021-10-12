@@ -42,7 +42,7 @@ public class UserControllers {
 
     @RequestMapping(method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteUser(@RequestParam Integer userId, HttpServletRequest request){
-        userService.userDelete(userId);
+        userService.deleteUser(userId);
     }
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

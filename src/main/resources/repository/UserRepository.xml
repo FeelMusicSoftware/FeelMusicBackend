@@ -31,14 +31,8 @@
             id_rol = 2
     </update>
     <delete id="deleteUser" parameterType="feelmusicbackend.demo.repository.UserRepository">
-        UPDATE user set
-                        status=0,
-                        tx_id_user=#{transaction.txIdUser},
-                        tx_host=#{transaction.txHost},
-                        tx_update=#{transaction.txUpdate}
+        DELETE FROM user
         WHERE
-            id_user=#{idUser} and
-            status=1 and
-            id_rol = 2
+            id_user=#{userId}
     </delete>
 </mapper>

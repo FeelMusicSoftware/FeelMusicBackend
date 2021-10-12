@@ -3,8 +3,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "idUser": 2,
-  "idPerson": 2,
+  "idUser": 3,
+  "idPerson": 3,
   "name": "jorge",
   "firstSurname": "alejo",
   "secondSurname": "gutierrez",
@@ -13,3 +13,8 @@ Content-Type: application/json
   "email": "jorge@gmail.com",
   "password": "12345"
 }
+
+###
+DELETE http://localhost:8080/user?userId=1
+Accept: application/json
+Content-Type: application/json

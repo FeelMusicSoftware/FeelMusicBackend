@@ -24,13 +24,8 @@ public class UserService {
     //@Autowired
     //private BCryptPasswordEncoder passwordEncoder;
 
-    public User addUser(User user){
-
-        return user;
-    }
-
     public UserResponse createUser(UserResponse userResponse){
-        System.out.println(userResponse.getName()+" ENTOTOTO");
+        //System.out.println(userResponse.getName()+" ENTOTOTO");
         User user = new User();
         Person person = new Person();
         person.setName(userResponse.getName());
@@ -74,9 +69,9 @@ public class UserService {
         return userDataRequest;
     }
 
-    public void userDelete(Integer idUser){
-        User userAdd=new User();
-        userAdd.setIdUser(idUser);
-        userRepository.deleteUser(userAdd);
+
+    public void deleteUser(Integer userId) {
+        userRepository.deleteUser(userId);
     }
+
 }

@@ -1,0 +1,18 @@
+POST http://localhost:8080/artist
+Accept: application/json
+Content-Type: application/json
+
+{
+  "idUser": 1,
+  "idPerson": 2,
+  "idArtist": 1,
+  "name": "jorge",
+  "firstSurname": "alejo",
+  "secondSurname": "gutierrez",
+  "phone": "75653453",
+  "country": "Bolivia",
+  "artistName": "jorgeCanta",
+  "username": "jorge123",
+  "email": "jorge@gmail.com",
+  "password": "12345"
+}
