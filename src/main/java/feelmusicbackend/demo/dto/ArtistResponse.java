@@ -1,9 +1,9 @@
 package feelmusicbackend.demo.dto;
 
 public class ArtistResponse {
+    private Integer idArtist;
     private Integer idUser;
     private Integer idPerson;
-    private Integer idArtist;
     private String name;
     private String firstSurname;
     private String secondSurname;
@@ -114,13 +114,12 @@ public class ArtistResponse {
         this.password = password;
     }
 
-
     @Override
     public String toString() {
         return "ArtistResponse{" +
-                "idUser=" + idUser +
+                "idArtist=" + idArtist +
+                ", idUser=" + idUser +
                 ", idPerson=" + idPerson +
-                ", idArtist=" + idArtist +
                 ", name='" + name + '\'' +
                 ", firstSurname='" + firstSurname + '\'' +
                 ", secondSurname='" + secondSurname + '\'' +
@@ -132,6 +131,4 @@ public class ArtistResponse {
                 ", password='" + password + '\'' +
                 '}';
     }
-
-
 }

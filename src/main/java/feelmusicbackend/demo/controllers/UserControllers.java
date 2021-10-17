@@ -35,19 +35,24 @@ public class UserControllers {
 
     @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public User updateUser(@RequestBody User user, HttpServletRequest request){
-        User userRes=userService.updateUser(user);
-        return userRes;
+    public UserResponse updateUser(@RequestBody UserResponse userResponse){
+        userService.updateUser(userResponse);
+        return userResponse;
     }
 
     @RequestMapping(method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteUser(@RequestParam Integer userId, HttpServletRequest request){
         userService.deleteUser(userId);
     }
-
+/*
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDataRequest getUsers(@RequestParam Integer n, @RequestParam Integer i, @RequestParam(required = false) String search){
         return userService.getUsers(i,n,search);
+    }
+*/
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserResponse findByUserId(@RequestParam Integer userId, HttpServletRequest request){
+        return userService.findByUserId(userId);
     }
 
 }

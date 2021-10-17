@@ -11,25 +11,42 @@
         INSERT INTO user VALUES (null, #{idPerson}, #{username}, #{email}, #{password})
     </insert>
 
-
-
-    <select id="findByUserId" resultType="feelmusicbackend.demo.repository.UserRepository">
-        SELECT
-            id_user as idUser,
-            email as email
-        FROM user
-        WHERE
-            id_user = #{idUser}
-    </select>
-
     <update id="updateUser" parameterType="feelmusicbackend.demo.repository.UserRepository">
         UPDATE user SET
-                        id_user=#{idUser}, password=#{password},email=#{email},status=1,tx_date=#{transaction.txDate},
-                        tx_id_user=#{transaction.txIdUser},tx_host=#{transaction.txHost},tx_update=#{transaction.txUpdate}
-        WHERE id_user=#{idUser} and
-            status = 1 and
-            id_rol = 2
+            id_user=#{idUser} ,id_person=#{idPerson} ,username=#{username},email=#{email} ,password=#{password}
+        WHERE id_user=#{idUser}
     </update>
+
+    <select id="findByUserId" resultMap="userInfo">
+        SELECT
+            u.id_user as idUser,
+            u.id_person as idPerson,
+            p.name as name,
+            p.first_surname as firstSurname,
+            p.second_surname as secondSurname,
+            p.phone as phone,
+            u.username as username,
+            u.email as email,
+            u.password as password
+        FROM user u
+        INNER JOIN person p ON
+            u.id_person=p.id_person
+        WHERE
+            u.id_user= #{userId}
+    </select>
+
+    <resultMap type="feelmusicbackend.demo.dto.UserResponse" id="userInfo">
+        <result column="idUser" property="idUser"/>
+        <result column="idPerson" property="idPerson"/>
+        <result column="name" property="name"/>
+        <result column="firstSurname" property="firstSurname"/>
+        <result column="secondSurname" property="secondSurname"/>
+        <result column="phone" property="phone"/>
+        <result column="username" property="username"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
     <delete id="deleteUser" parameterType="feelmusicbackend.demo.repository.UserRepository">
         DELETE FROM user
         WHERE

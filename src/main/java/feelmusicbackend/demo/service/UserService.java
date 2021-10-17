@@ -24,6 +24,10 @@ public class UserService {
     //@Autowired
     //private BCryptPasswordEncoder passwordEncoder;
 
+    public UserResponse findByUserId(Integer userId){
+        return userRepository.findByUserId(userId);
+    }
+
     public UserResponse createUser(UserResponse userResponse){
         //System.out.println(userResponse.getName()+" ENTOTOTO");
         User user = new User();
@@ -33,7 +37,7 @@ public class UserService {
         person.setSecondSurname(userResponse.getSecondSurname());
         person.setPhone(userResponse.getPhone());
         personRepository.createPerson(person);
-        System.out.println(person.getName());
+        //System.out.println(person.getName());
         int personId=personRepository.getLastInsertId();
         user.setIdPerson(personId);
         user.setUsername(userResponse.getUsername());
@@ -47,19 +51,22 @@ public class UserService {
     }
 
 
-    public User updateUser(User user){
-        User userAdd=new User();
-        userAdd.setIdUser(user.getIdUser());
-        userAdd.setUsername(user.getUsername());
-        userAdd.setEmail(user.getEmail());
-        if(user.getPassword()!=null&&user.getPassword()!=""&&user.getPassword().length()>6){
-            //userAdd.setPassword(passwordEncoder.encode(user.getPassword()));
-        }
-        else{
-            userAdd.setPassword(null);
-        }
-        userRepository.updateUser(userAdd);
-        return user;
+    public UserResponse updateUser(UserResponse userResponse){
+        User user=new User();
+        Person person = new Person();
+        person.setIdPerson(userResponse.getIdPerson());
+        person.setName(userResponse.getName());
+        person.setFirstSurname(userResponse.getFirstSurname());
+        person.setSecondSurname(userResponse.getSecondSurname());
+        person.setPhone(userResponse.getPhone());
+        personRepository.updatePerson(person);
+        user.setIdUser(userResponse.getIdUser());
+        user.setIdPerson(userResponse.getIdPerson());
+        user.setUsername(userResponse.getUsername());
+        user.setEmail(userResponse.getEmail());
+        user.setPassword(userResponse.getPassword());
+        userRepository.updateUser(user);
+        return userResponse;
     }
 
     public UserDataRequest getUsers(Integer i, Integer n, String search){

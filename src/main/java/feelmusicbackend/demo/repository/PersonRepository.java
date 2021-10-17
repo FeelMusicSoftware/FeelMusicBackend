@@ -8,4 +8,5 @@ public interface PersonRepository {
     public Integer getLastInsertId();
     public Person findByPersonId(Integer personId);
     public void createPerson(Person person);
+    public void updatePerson(Person person);
 }

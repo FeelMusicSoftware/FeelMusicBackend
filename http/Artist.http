@@ -3,9 +3,9 @@ Accept: application/json
 Content-Type: application/json
 
 {
+  "idArtist": 1,
   "idUser": 1,
   "idPerson": 2,
-  "idArtist": 1,
   "name": "jorge",
   "firstSurname": "alejo",
   "secondSurname": "gutierrez",
@@ -16,3 +16,33 @@ Content-Type: application/json
   "email": "jorge@gmail.com",
   "password": "12345"
 }
+
+###
+PUT http://localhost:8080/artist
+Accept: application/json
+Content-Type: application/json
+
+{
+  "idArtist": 1,
+  "idUser": 6,
+  "idPerson": 6,
+  "name": "erwinQQ",
+  "firstSurname": "alejo",
+  "secondSurname": "gutierrez",
+  "phone": "75653453",
+  "country": "Bolivia",
+  "artistName": "erwinACanta",
+  "username": "erwin123",
+  "email": "erwinQQ@gmail.com",
+  "password": "12345"
+}
+
+###
+DELETE http://localhost:8080/artist?artistId=3
+Accept: application/json
+Content-Type: application/json
+
+###
+GET http://localhost:8080/artist?artistId=1
+Accept: application/json
+Content-Type: application/json

@@ -8,4 +8,53 @@
         INSERT INTO artist VALUES (null, #{idUser}, #{country}, #{artistName})
     </insert>
 
+    <update id="updateArtist" parameterType="feelmusicbackend.demo.repository.ArtistRepository">
+        UPDATE artist SET
+            id_artist=#{idArtist} ,id_user=#{idUser} ,country=#{country},artist_name=#{artistName}
+        WHERE id_artist=#{idArtist}
+    </update>
+
+    <select id="findByArtistId" resultMap="artistInfo">
+        SELECT
+            a.id_artist as idArtist,
+            u.id_user as idUser,
+            u.id_person as idPerson,
+            p.name as name,
+            p.first_surname as firstSurname,
+            p.second_surname as secondSurname,
+            p.phone as phone,
+            a.country as country,
+            a.artist_name as artistName,
+            u.username as username,
+            u.email as email,
+            u.password as password
+        FROM artist a
+        INNER JOIN user u ON
+            a.id_user=u.id_user
+        INNER JOIN person p ON
+            u.id_person=p.id_person
+        WHERE
+            a.id_artist= #{artistId}
+    </select>
+
+    <resultMap type="feelmusicbackend.demo.dto.ArtistResponse" id="artistInfo">
+        <result column="idArtist" property="idArtist"/>
+        <result column="idUser" property="idUser"/>
+        <result column="idPerson" property="idPerson"/>
+        <result column="name" property="name"/>
+        <result column="firstSurname" property="firstSurname"/>
+        <result column="secondSurname" property="secondSurname"/>
+        <result column="phone" property="phone"/>
+        <result column="country" property="country"/>
+        <result column="artistName" property="artistName"/>
+        <result column="username" property="username"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <delete id="deleteArtist" parameterType="feelmusicbackend.demo.repository.ArtistRepository">
+        DELETE FROM artist
+        WHERE
+            id_artist=#{artistId}
+    </delete>
 </mapper>

@@ -23,10 +23,8 @@
     </insert>
     <update id="updatePerson" parameterType="feelmusicbackend.demo.entity.Person">
         UPDATE person SET
-                          first_name=#{firstName},last_name=#{lastName},phone_number=#{phoneNumber},
-                          tx_id_user=#{transaction.txIdUser},tx_host=#{transaction.txHost},tx_update=#{transaction.txUpdate}
-        WHERE id_person=#{idPerson} and
-            status = 1
+            id_person=#{idPerson} ,name=#{name} , first_surname=#{firstSurname} ,second_surname=#{secondSurname} ,phone=#{phone}
+        WHERE id_person=#{idPerson}
     </update>
     <delete id="deletePerson" parameterType="feelmusicbackend.demo.entity.Person">
         UPDATE person set

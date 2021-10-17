@@ -1,6 +1,7 @@
 package feelmusicbackend.demo.service;
 
 import feelmusicbackend.demo.dto.ArtistResponse;
+import feelmusicbackend.demo.dto.UserResponse;
 import feelmusicbackend.demo.entity.Artist;
 import feelmusicbackend.demo.entity.Person;
 import feelmusicbackend.demo.entity.User;
@@ -23,6 +24,10 @@ public class ArtistService {
         this.artistRepository = artistRepository;
     }
 
+    public ArtistResponse findByArtistId(Integer artistId){
+        return artistRepository.findByArtistId(artistId);
+    }
+
     public ArtistResponse createArtist(ArtistResponse artistResponse){
         Person person = new Person();
         User user = new User();
@@ -32,7 +37,6 @@ public class ArtistService {
         person.setSecondSurname(artistResponse.getSecondSurname());
         person.setPhone(artistResponse.getPhone());
         personRepository.createPerson(person);
-        //System.out.println(person.getName());
         int personId=personRepository.getLastInsertId();
         user.setIdPerson(personId);
         user.setUsername(artistResponse.getUsername());
@@ -50,4 +54,32 @@ public class ArtistService {
         artistResponse.setIdArtist(artistId);
         return artistResponse;
     }
+
+    public ArtistResponse updateArtist(ArtistResponse artistResponse){
+        Person person = new Person();
+        User user = new User();
+        Artist artist = new Artist();
+        person.setIdPerson(artistResponse.getIdPerson());
+        person.setName(artistResponse.getName());
+        person.setFirstSurname(artistResponse.getFirstSurname());
+        person.setSecondSurname(artistResponse.getSecondSurname());
+        person.setPhone(artistResponse.getPhone());
+        personRepository.updatePerson(person);
+        user.setIdUser(artistResponse.getIdUser());
+        user.setIdPerson(artistResponse.getIdPerson());
+        user.setUsername(artistResponse.getUsername());
+        user.setEmail(artistResponse.getEmail());
+        user.setPassword(artistResponse.getPassword());
+        userRepository.updateUser(user);
+        artist.setIdUser(artistResponse.getIdUser());
+        artist.setCountry(artistResponse.getCountry());
+        artist.setArtistName(artistResponse.getArtistName());
+        artistRepository.updateArtist(artist);
+        return artistResponse;
+    }
+
+    public void deleteArtist(Integer artistId) {
+        artistRepository.deleteArtist(artistId);
+    }
+
 }
