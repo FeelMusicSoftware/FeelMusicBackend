@@ -1,0 +1,9 @@
+POST http://localhost:8080/album
+Accept: application/json
+Content-Type: application/json
+
+{
+  "idAlbum": 1,
+  "name": "Thriller",
+  "songName": "Thriller"
+}
