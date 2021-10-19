@@ -2,14 +2,23 @@ package feelmusicbackend.demo.service;
 
 
 import feelmusicbackend.demo.dto.UserDataRequest;
+import feelmusicbackend.demo.dto.UserRequest;
 import feelmusicbackend.demo.dto.UserResponse;
 import feelmusicbackend.demo.entity.Person;
 import feelmusicbackend.demo.entity.User;
+import feelmusicbackend.demo.util.JWTUtil;
+
 import feelmusicbackend.demo.repository.PersonRepository;
 import feelmusicbackend.demo.repository.TransactionRepository;
 import feelmusicbackend.demo.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+
 
 @Service
 public class UserService {
@@ -23,6 +32,9 @@ public class UserService {
         this.personRepository = personRepository;
         this.transactionRepository = transactionRepository;
     }
+
+    @Autowired
+    PasswordEncoder encoder;
 
     //@Autowired
     //private BCryptPasswordEncoder passwordEncoder;
@@ -84,4 +96,56 @@ public class UserService {
         userRepository.deleteUser(userId);
     }
 
+
+
+    public UserRequest SignUp(UserRequest userRequest){
+
+        UserRequest userInfo=userRepository.findByEmail(userRequest.getEmail());
+        if(userInfo==null){
+            User user=new User();
+            user.setEmail(userRequest.getEmail());
+            user.setPassword(encoder.encode(userRequest.getPassword()));
+            userRepository.createUserData(user);
+            UserRequest userPerson=new UserRequest();
+            Integer userId=transactionRepository.getLastInsertId();
+            userPerson.setIdUser(userId);
+            JWTUtil jwtUtil=new JWTUtil();
+            String token = jwtUtil.getJWTToken(userPerson);
+            userRequest.setToken(token);
+            return userRequest;
+        }
+        else{
+            throw new RuntimeException("Ya existe el usuario");
+        }
+    }
+
+    @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
+    class SignInFailed extends RuntimeException {
+        public SignInFailed(String message) {
+            super(message);
+        }
+    }
+
+    public UserRequest SignIn(UserRequest userRequest){
+
+        UserRequest userInfo=userRepository.findByEmail(userRequest.getEmail());
+        if(userInfo!=null){
+            if(encoder.matches(userRequest.getPassword(),userInfo.getPassword())){
+                UserRequest userPerson=personRepository.findByUserId(userInfo.getIdUser());
+                userInfo.setIdPerson(userPerson.getIdPerson());
+                userInfo.setPassword("");
+                JWTUtil jwtUtil=new JWTUtil();
+                String token = jwtUtil.getJWTToken(userInfo);
+                userInfo.setToken(token);
+                return userInfo;
+            }
+            else{
+
+                throw new SignInFailed("Credenciales incorrectas");
+            }
+        }
+        else{
+            throw new SignInFailed("No se encontró al usuario");
+        }
+    }
 }

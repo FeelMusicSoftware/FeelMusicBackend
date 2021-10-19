@@ -6,15 +6,16 @@ spring:
     platform: mysql
     url: jdbc:mysql://localhost:3306/feelmusic_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
-    password: ""
+    password:
     hikari:
       connectionTestQuery: select 1
       maximum-pool-size: 2
       connection-timeout: 60000
-
-  batch:
-    job:
-      enabled=false:server:
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 5MB
+server:
   error:
     include-message: always
 logging:
@@ -23,8 +24,20 @@ logging:
       spring:
         ibatis:
           UserMapper=DEBUG:
+
 mybatis:
   configuration:
     default-fetch-size: 100
     default-statement-timeout: 30
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+
   mapper-locations: classpath:/repository/*Repository.xml
+log4j:
+  logger:
+    org:
+      mybatis:
+        PublicationDao=DEBUG:
+
+
+
+

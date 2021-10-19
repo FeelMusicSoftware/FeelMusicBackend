@@ -1,5 +1,6 @@
 package feelmusicbackend.demo.repository;
 
+import feelmusicbackend.demo.dto.UserRequest;
 import feelmusicbackend.demo.dto.UserResponse;
 import feelmusicbackend.demo.entity.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -8,6 +9,8 @@ import java.util.List;
 
 @Mapper
 public interface UserRepository {
+    public UserRequest findByEmail(String email);
+    public void createUserData(User user);
     public Integer getLastInsertUserId();
     public UserResponse findByUserId(Integer userId);
     public void createUser(User user);

@@ -33,4 +33,13 @@
             id_person=#{idPerson} and
             status=1
     </delete>
+
+    <select id="findByUserId" resultType="feelmusicbackend.demo.dto.UserRequest">
+        SELECT
+            s.id_person as idPerson
+        FROM person s
+        WHERE
+            s.id_user = #{userId}
+    </select>
+
 </mapper>
