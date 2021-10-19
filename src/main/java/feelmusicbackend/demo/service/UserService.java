@@ -129,11 +129,13 @@ public class UserService {
     public UserRequest SignIn(UserRequest userRequest){
 
         UserRequest userInfo=userRepository.findByEmail(userRequest.getEmail());
+        System.out.println("asac  "+userInfo.getEmail());
         if(userInfo!=null){
             if(encoder.matches(userRequest.getPassword(),userInfo.getPassword())){
-                UserRequest userPerson=personRepository.findByUserId(userInfo.getIdUser());
-                userInfo.setIdPerson(userPerson.getIdPerson());
-                userInfo.setPassword("");
+                UserRequest user1=userRepository.findByUserIdPerson(userInfo.getIdUser());
+                //System.out.println("asac  "+user1.getIdPerson());
+                userInfo.setIdPerson(user1.getIdPerson());
+                userInfo.setPassword(userRequest.getPassword());
                 JWTUtil jwtUtil=new JWTUtil();
                 String token = jwtUtil.getJWTToken(userInfo);
                 userInfo.setToken(token);

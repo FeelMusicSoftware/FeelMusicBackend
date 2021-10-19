@@ -13,6 +13,7 @@ public interface UserRepository {
     public void createUserData(User user);
     public Integer getLastInsertUserId();
     public UserResponse findByUserId(Integer userId);
+    public UserRequest findByUserIdPerson(Integer personId);
     public void createUser(User user);
     public void updateUser(User user);
     public void deleteUser(Integer userId);

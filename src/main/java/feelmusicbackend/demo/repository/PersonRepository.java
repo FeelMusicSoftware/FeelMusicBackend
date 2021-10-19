@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PersonRepository {
     public Person findByPersonId(Integer personId);
-    public UserRequest findByUserId(Integer userId);
+    public UserRequest findByUserId(Integer personId);
     public void createPerson(Person person);
     public void updatePerson(Person person);
 }

@@ -55,11 +55,21 @@
 
     <select id="findByEmail" resultType="feelmusicbackend.demo.dto.UserRequest">
         SELECT u.id_user as idUser,
+               u.id_person as idPerson,
+               u.username as username,
+               u.email as email,
                u.password as password
         FROM user u
         WHERE
             u.email = #{email}
     </select>
 
+    <select id="findByUserIdPerson" resultType="feelmusicbackend.demo.dto.UserRequest">
+        SELECT
+            u.id_user as idUser
+        FROM user u
+        WHERE
+            u.id_person = #{personId}
+    </select>
 
 </mapper>

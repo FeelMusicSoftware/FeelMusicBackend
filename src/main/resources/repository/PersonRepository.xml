@@ -36,10 +36,10 @@
 
     <select id="findByUserId" resultType="feelmusicbackend.demo.dto.UserRequest">
         SELECT
-            s.id_person as idPerson
-        FROM person s
+            u.id_user as idUser
+        FROM user u
         WHERE
-            s.id_user = #{userId}
+            u.id_person = #{personId}
     </select>
 
 </mapper>
