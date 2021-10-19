@@ -7,6 +7,7 @@ import feelmusicbackend.demo.entity.Person;
 import feelmusicbackend.demo.entity.User;
 import feelmusicbackend.demo.repository.ArtistRepository;
 import feelmusicbackend.demo.repository.PersonRepository;
+import feelmusicbackend.demo.repository.TransactionRepository;
 import feelmusicbackend.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +17,14 @@ public class ArtistService {
     private PersonRepository personRepository;
     private UserRepository userRepository;
     private ArtistRepository artistRepository;
+    private TransactionRepository transactionRepository;
 
     @Autowired
-    public ArtistService(PersonRepository personRepository, UserRepository userRepository, ArtistRepository artistRepository){
+    public ArtistService(PersonRepository personRepository, UserRepository userRepository, ArtistRepository artistRepository, TransactionRepository transactionRepository){
         this.personRepository = personRepository;
         this.userRepository = userRepository;
         this.artistRepository = artistRepository;
+        this.transactionRepository = transactionRepository;
     }
 
     public ArtistResponse findByArtistId(Integer artistId){
@@ -37,18 +40,18 @@ public class ArtistService {
         person.setSecondSurname(artistResponse.getSecondSurname());
         person.setPhone(artistResponse.getPhone());
         personRepository.createPerson(person);
-        int personId=personRepository.getLastInsertId();
+        int personId=transactionRepository.getLastInsertId();
         user.setIdPerson(personId);
         user.setUsername(artistResponse.getUsername());
         user.setEmail(artistResponse.getEmail());
         user.setPassword(artistResponse.getPassword());
         userRepository.createUser(user);
-        int userId=personRepository.getLastInsertId();
+        int userId=transactionRepository.getLastInsertId();
         artist.setCountry(artistResponse.getCountry());
         artist.setArtistName(artistResponse.getArtistName());
         artist.setIdUser(userId);
         artistRepository.createArtist(artist);
-        int artistId=personRepository.getLastInsertId();
+        int artistId=transactionRepository.getLastInsertId();
         artistResponse.setIdUser(userId);
         artistResponse.setIdPerson(personId);
         artistResponse.setIdArtist(artistId);

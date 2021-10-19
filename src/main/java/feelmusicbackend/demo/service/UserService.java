@@ -6,6 +6,7 @@ import feelmusicbackend.demo.dto.UserResponse;
 import feelmusicbackend.demo.entity.Person;
 import feelmusicbackend.demo.entity.User;
 import feelmusicbackend.demo.repository.PersonRepository;
+import feelmusicbackend.demo.repository.TransactionRepository;
 import feelmusicbackend.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private UserRepository userRepository;
     private PersonRepository personRepository;
+    private TransactionRepository transactionRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository, PersonRepository personRepository){
+    public UserService(UserRepository userRepository, PersonRepository personRepository, TransactionRepository transactionRepository){
         this.userRepository = userRepository;
         this.personRepository = personRepository;
+        this.transactionRepository = transactionRepository;
     }
 
     //@Autowired
@@ -38,13 +41,13 @@ public class UserService {
         person.setPhone(userResponse.getPhone());
         personRepository.createPerson(person);
         //System.out.println(person.getName());
-        int personId=personRepository.getLastInsertId();
+        int personId=transactionRepository.getLastInsertId();
         user.setIdPerson(personId);
         user.setUsername(userResponse.getUsername());
         user.setEmail(userResponse.getEmail());
         user.setPassword(userResponse.getPassword());
         userRepository.createUser(user);
-        int userId=personRepository.getLastInsertId();
+        int userId=transactionRepository.getLastInsertId();
         userResponse.setIdUser(userId);
         userResponse.setIdPerson(personId);
         return userResponse;

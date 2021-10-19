@@ -4,7 +4,7 @@ public class Song {
     private Integer idSong;
     private Integer idAlbum;
     private Integer idGenre;
-    private Integer idIdioms;
+    private Integer idLanguage;
     private Integer idArtist;
     private String name;
     private Double duration;
@@ -37,12 +37,12 @@ public class Song {
         this.idGenre = idGenre;
     }
 
-    public Integer getIdIdioms() {
-        return idIdioms;
+    public Integer getIdLanguage() {
+        return idLanguage;
     }
 
-    public void setIdIdioms(Integer idIdioms) {
-        this.idIdioms = idIdioms;
+    public void setIdLanguage(Integer idLanguage) {
+        this.idLanguage = idLanguage;
     }
 
     public Integer getIdArtist() {
@@ -83,7 +83,7 @@ public class Song {
                 "idSong=" + idSong +
                 ", idAlbum=" + idAlbum +
                 ", idGenre=" + idGenre +
-                ", idIdioms=" + idIdioms +
+                ", idLanguage=" + idLanguage +
                 ", idArtist=" + idArtist +
                 ", name='" + name + '\'' +
                 ", duration=" + duration +
