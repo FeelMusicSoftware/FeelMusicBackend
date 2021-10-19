@@ -4,7 +4,7 @@ Content-Type: application/json
 Authorization: Bearer eyJpZFVzZXIiOjMsImlkU2VsbGVyIjozLCJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjIxMzYxMTY3LCJleHAiOjE2MjE0NDc1Njd9.vOXoVPZCvwbnAW8LahJSJtYUzf2f7SfDCNeK8JTxnKs8NHyyDos4AUWiF_1bUIouhDo9OMBkSUl4qqK111AHxg
 
 {
-  "email": "erwin@gmail.com",
+  "email": "escobarkev@gmail.com",
   "password": "12345"
 }
 
