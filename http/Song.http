@@ -1,0 +1,19 @@
+POST http://localhost:8080/song
+Accept: application/json
+Content-Type: application/json
+
+{
+  "idSong":  1,
+  "idAlbum": 1,
+  "idGenre": 1,
+  "idLanguage": 1,
+  "idArtist": 2,
+  "nameAlbum": "Disco de Michael Jackson",
+  "songAlbum": "Cancion de Michael Jackson",
+  "nameGenre": "Rock",
+  "description": "Rock es un genero movido",
+  "language": "Español",
+  "nameSong": "Thriller",
+  "durationSong": 3.45,
+  "moodSong": 1
+}

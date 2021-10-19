@@ -3,9 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="feelmusicbackend.demo.repository.PersonRepository">
-    <select id="getLastInsertId" resultType="java.lang.Integer">
-        SELECT LAST_INSERT_ID()
-    </select>
     <select id="findByPersonId" resultType="feelmusicbackend.demo.entity.Person">
         SELECT
             id_person as idPerson,
@@ -36,4 +33,13 @@
             id_person=#{idPerson} and
             status=1
     </delete>
+
+    <select id="findByUserId" resultType="feelmusicbackend.demo.dto.UserRequest">
+        SELECT
+            s.id_person as idPerson
+        FROM person s
+        WHERE
+            s.id_user = #{userId}
+    </select>
+
 </mapper>

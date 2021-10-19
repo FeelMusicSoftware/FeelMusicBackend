@@ -5,7 +5,6 @@
 <mapper namespace="feelmusicbackend.demo.repository.AlbumRepository">
 
     <insert id="createAlbum" parameterType="feelmusicbackend.demo.entity.Album">
-        INSERT INTO album VALUES
-            (null, #{name}, #{songName})
+        INSERT INTO album VALUES (null, #{name}, #{songName})
     </insert>
 </mapper>

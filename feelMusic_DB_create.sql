@@ -66,7 +66,7 @@ CREATE TABLE Song (
                       id_song int NOT NULL AUTO_INCREMENT,
                       id_album int NOT NULL,
                       id_genre int NOT NULL,
-                      id_idioms int NOT NULL,
+                      id_language int NOT NULL,
                       id_artist int NOT NULL,
                       name varchar(250) NOT NULL,
                       duration double(7,2) NOT NULL,
@@ -117,8 +117,8 @@ ALTER TABLE Song ADD CONSTRAINT Song_Artist FOREIGN KEY Song_Artist (id_artist)
 ALTER TABLE Song ADD CONSTRAINT Song_Genre FOREIGN KEY Song_Genre (id_genre)
     REFERENCES Genre (id_genre);
 
--- Reference: Song_Idioms (table: Song)
-ALTER TABLE Song ADD CONSTRAINT Song_Idioms FOREIGN KEY Song_Idioms (id_idioms)
+-- Reference: Song_Language (table: Song)
+ALTER TABLE Song ADD CONSTRAINT Song_Language FOREIGN KEY Song_Language (id_language)
     REFERENCES Language (id_language);
 
 -- Reference: Song_Playlist_Playlist (table: Song_Playlist)
@@ -134,3 +134,4 @@ ALTER TABLE User ADD CONSTRAINT User_Person FOREIGN KEY User_Person (id_person)
     REFERENCES Person (id_person);
 
 -- End of file.
+

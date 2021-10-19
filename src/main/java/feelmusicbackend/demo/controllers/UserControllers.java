@@ -1,6 +1,7 @@
 package feelmusicbackend.demo.controllers;
 
 import feelmusicbackend.demo.dto.UserDataRequest;
+import feelmusicbackend.demo.dto.UserRequest;
 import feelmusicbackend.demo.dto.UserResponse;
 import feelmusicbackend.demo.entity.User;
 import feelmusicbackend.demo.service.UserService;
@@ -55,4 +56,14 @@ public class UserControllers {
         return userService.findByUserId(userId);
     }
 
+    @RequestMapping(path="signup",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserRequest SignUp(@RequestBody UserRequest userRequest, HttpServletRequest request) {
+         return userService.SignUp(userRequest);
+    }
+
+    @RequestMapping(path="signin",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserRequest SignIn(@RequestBody UserRequest userRequest, HttpServletRequest request) {
+        System.out.println(userRequest);
+        return userService.SignIn(userRequest);
+    }
 }

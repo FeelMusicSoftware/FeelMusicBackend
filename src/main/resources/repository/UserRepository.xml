@@ -52,4 +52,14 @@
         WHERE
             id_user=#{userId}
     </delete>
+
+    <select id="findByEmail" resultType="feelmusicbackend.demo.dto.UserRequest">
+        SELECT u.id_user as idUser,
+               u.password as password
+        FROM user u
+        WHERE
+            u.email = #{email}
+    </select>
+
+
 </mapper>
