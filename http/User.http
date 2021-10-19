@@ -3,8 +3,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "email": "erwin@gmail.com",
-  "password": "abc1234"
+  "email": "jorge13@gmail.com",
+  "password": "1234567890"
 }
 
 ###
@@ -20,8 +20,8 @@ Content-Type: application/json
   "secondSurname": "gutierrez",
   "phone": "75653453",
   "username": "jorge123",
-  "email": "jorge@gmail.com",
-  "password": "12345"
+  "email": "jorge13@gmail.com",
+  "password": "1234567890"
 }
 
 ###
@@ -50,3 +50,4 @@ Content-Type: application/json
 GET http://localhost:8080/user?userId=4
 Accept: application/json
 Content-Type: application/json
+Authorization: Bearer eyJpZFVzZXIiOjMsImlkU2VsbGVyIjozLCJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjIxMzYxMTY3LCJleHAiOjE2MjE0NDc1Njd9.vOXoVPZCvwbnAW8LahJSJtYUzf2f7SfDCNeK8JTxnKs8NHyyDos4AUWiF_1bUIouhDo9OMBkSUl4qqK111AHxg

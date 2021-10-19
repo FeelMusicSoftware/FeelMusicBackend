@@ -57,11 +57,12 @@ public class UserService {
         user.setIdPerson(personId);
         user.setUsername(userResponse.getUsername());
         user.setEmail(userResponse.getEmail());
-        user.setPassword(userResponse.getPassword());
+        user.setPassword(encoder.encode(userResponse.getPassword()));
         userRepository.createUser(user);
         int userId=transactionRepository.getLastInsertId();
         userResponse.setIdUser(userId);
         userResponse.setIdPerson(personId);
+        System.out.println("ASDDADSD    "+user.getPassword());
         return userResponse;
     }
 
@@ -132,9 +133,10 @@ public class UserService {
         System.out.println("asac  "+userInfo.getEmail());
         if(userInfo!=null){
             if(encoder.matches(userRequest.getPassword(),userInfo.getPassword())){
-                UserRequest user1=userRepository.findByUserIdPerson(userInfo.getIdUser());
-                //System.out.println("asac  "+user1.getIdPerson());
-                userInfo.setIdPerson(user1.getIdPerson());
+                UserRequest userPerson=personRepository.findByUserId(userInfo.getIdUser());
+                System.out.println("asacppp  "+userPerson.getIdPerson());
+                System.out.println("ENTROSAOSOAOS   ");
+                userInfo.setIdPerson(userPerson.getIdPerson());
                 userInfo.setPassword(userRequest.getPassword());
                 JWTUtil jwtUtil=new JWTUtil();
                 String token = jwtUtil.getJWTToken(userInfo);
