@@ -39,8 +39,8 @@ public class FeelMusicBackendApplication {
                     .authorizeRequests()
                     .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
                     .antMatchers(HttpMethod.POST, "/user/signin").permitAll()
-                    .antMatchers(HttpMethod.POST, "/user").permitAll()
-                    .anyRequest().authenticated();
+                    //.antMatchers(HttpMethod.POST, "/user").permitAll()
+                    .anyRequest().permitAll();
         }
         @Bean
         CorsConfigurationSource corsConfigurationSource() {
