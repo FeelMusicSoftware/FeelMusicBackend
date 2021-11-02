@@ -3,8 +3,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "email": "jorge13@gmail.com",
-  "password": "1234567890"
+  "email": "escobarkev@gmail.com",
+  "password": "12345"
 }
 
 ###
@@ -23,6 +23,24 @@ Content-Type: application/json
   "email": "jorge13@gmail.com",
   "password": "1234567890"
 }
+
+###
+POST http://localhost:8080/user
+Accept: application/json
+Content-Type: application/json
+
+{
+  "idUser": 2,
+  "idPerson": 2,
+  "name": "Kevin",
+  "firstSurname": "Escobar",
+  "secondSurname": "Escobar",
+  "phone": "72585398",
+  "username": "kevin",
+  "email": "escobarkev@gmail.com",
+  "password": "12345"
+}
+
 
 ###
 PUT http://localhost:8080/user
@@ -47,7 +65,7 @@ Accept: application/json
 Content-Type: application/json
 
 ###
-GET http://localhost:8080/user?userId=4
+GET http://localhost:8080/user?userId=2
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer eyJpZFVzZXIiOjMsImlkU2VsbGVyIjozLCJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjIxMzYxMTY3LCJleHAiOjE2MjE0NDc1Njd9.vOXoVPZCvwbnAW8LahJSJtYUzf2f7SfDCNeK8JTxnKs8NHyyDos4AUWiF_1bUIouhDo9OMBkSUl4qqK111AHxg
