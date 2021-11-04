@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "email": "jor@gmail.com",
-  "password": "12345"
+  "password": "123"
 }
 
 ###
@@ -48,14 +48,14 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "idUser": 4,
-  "idPerson": 4,
-  "name": "erwin",
+  "idUser": 10,
+  "idPerson": 10,
+  "name": "jorge",
   "firstSurname": "alejo",
-  "secondSurname": "gutierrez",
+  "secondSurname": "gutierrez1",
   "phone": "75653453",
-  "username": "erwin123",
-  "email": "erwin@gmail.com",
+  "username": "jorge123",
+  "email": "jor@gmail.com",
   "password": "12345"
 }
 

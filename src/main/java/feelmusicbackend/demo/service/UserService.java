@@ -84,7 +84,9 @@ public class UserService {
         user.setUsername(userResponse.getUsername());
         user.setEmail(userResponse.getEmail());
         user.setPassword(userResponse.getPassword());
+        //user.setPassword(encoder.encode(userResponse.getPassword()));
         userRepository.updateUser(user);
+        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA "+user.getPassword());
         return userResponse;
     }
 
