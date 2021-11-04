@@ -56,6 +56,10 @@ public class UserControllers {
         return userService.findByUserId(userId);
     }
 
+    @RequestMapping(path="profile",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserResponse dataByUserId(HttpServletRequest request){
+        return userService.dataByUserId();
+    }
     @RequestMapping(path="signup",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
     public UserRequest SignUp(@RequestBody UserRequest userRequest, HttpServletRequest request) {
          return userService.SignUp(userRequest);

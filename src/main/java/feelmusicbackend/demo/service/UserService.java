@@ -2,6 +2,7 @@ package feelmusicbackend.demo.service;
 
 
 import feelmusicbackend.demo.dto.UserDataRequest;
+import feelmusicbackend.demo.dto.UserInformation;
 import feelmusicbackend.demo.dto.UserRequest;
 import feelmusicbackend.demo.dto.UserResponse;
 import feelmusicbackend.demo.entity.Person;
@@ -14,6 +15,8 @@ import feelmusicbackend.demo.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -151,5 +154,13 @@ public class UserService {
         else{
             throw new SignInFailed("No se encontró al usuario");
         }
+    }
+
+    public UserResponse dataByUserId(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserInformation userInformation = (UserInformation) authentication.getCredentials();
+        int userId = userInformation.getIdUser();
+        System.out.println("lossssssssss "+userId);
+        return userRepository.dataByUserId(userId);
     }
 }

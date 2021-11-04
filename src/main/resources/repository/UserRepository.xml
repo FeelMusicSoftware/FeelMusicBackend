@@ -72,4 +72,33 @@
             u.id_person = #{personId}
     </select>
 
+    <select id="dataByUserId" resultMap="userData">
+        SELECT
+            u.id_user as idUser,
+            u.id_person as idPerson,
+            p.name as name,
+            p.first_surname as firstSurname,
+            p.second_surname as secondSurname,
+            p.phone as phone,
+            u.username as username,
+            u.email as email,
+            u.password as password
+        FROM user u
+                 INNER JOIN person p ON
+            u.id_person=p.id_person
+        WHERE
+            u.id_user= #{userId}
+    </select>
+
+    <resultMap type="feelmusicbackend.demo.dto.UserResponse" id="userData">
+        <result column="idUser" property="idUser"/>
+        <result column="idPerson" property="idPerson"/>
+        <result column="name" property="name"/>
+        <result column="firstSurname" property="firstSurname"/>
+        <result column="secondSurname" property="secondSurname"/>
+        <result column="phone" property="phone"/>
+        <result column="username" property="username"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+    </resultMap>
 </mapper>

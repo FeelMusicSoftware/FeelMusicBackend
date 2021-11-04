@@ -3,7 +3,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "email": "escobarkev@gmail.com",
+  "email": "jor@gmail.com",
   "password": "12345"
 }
 
@@ -19,9 +19,9 @@ Content-Type: application/json
   "firstSurname": "alejo",
   "secondSurname": "gutierrez",
   "phone": "75653453",
-  "username": "jorge123",
-  "email": "jorge13@gmail.com",
-  "password": "1234567890"
+  "username": "jor123",
+  "email": "jor@gmail.com",
+  "password": "12345"
 }
 
 ###
@@ -68,4 +68,10 @@ Content-Type: application/json
 GET http://localhost:8080/user?userId=2
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer eyJpZFVzZXIiOjMsImlkU2VsbGVyIjozLCJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjIxMzYxMTY3LCJleHAiOjE2MjE0NDc1Njd9.vOXoVPZCvwbnAW8LahJSJtYUzf2f7SfDCNeK8JTxnKs8NHyyDos4AUWiF_1bUIouhDo9OMBkSUl4qqK111AHxg
+//Authorization: Bearer eyJpZFVzZXIiOjMsImlkU2VsbGVyIjozLCJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjIxMzYxMTY3LCJleHAiOjE2MjE0NDc1Njd9.vOXoVPZCvwbnAW8LahJSJtYUzf2f7SfDCNeK8JTxnKs8NHyyDos4AUWiF_1bUIouhDo9OMBkSUl4qqK111AHxg
+
+###
+GET http://localhost:8080/user/profile
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJpZFVzZXIiOjEwLCJpZFBlcnNvbiI6MTAsImFsZyI6IkhTNTEyIn0.eyJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjM1OTk2MTY3LCJleHAiOjE2MzYwODI1Njd9.M-lvmkrjS7qQBaenQUgEw4yJ-wY9-HgAseC0JsE1rVVLthnw9cBbnkw7sf_6RlAAI5OZgQcWrCPdH0rZ9o0Rgg
